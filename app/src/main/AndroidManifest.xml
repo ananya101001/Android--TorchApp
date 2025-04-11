@@ -1,0 +1,36 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.torchapp"> <!-- This package attribute can technically be removed now that you have namespace in build.gradle, but leaving it is okay -->
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:usesCleartextTraffic="true"
+        android:theme="@style/AppTheme"
+        tools:ignore="GoogleAppIndexingWarning">
+        <activity
+            android:name="com.paminov.torch.TorchActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/app_name"
+            android:theme="@style/FullscreenTheme"
+            android:exported="true"> <!-- Add this line -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <!-- If you had other Activities, Services, or Receivers with intent-filters, they would also need android:exported -->
+    </application>
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <!-- Consider adding required="false" if the app can function without a camera,
+         though for a torch app, camera is likely essential.
+         If essential, add required="true" explicitly or omit (defaults to true). -->
+    <uses-feature android:name="android.hardware.camera" android:required="true" />
+    <!-- It's good practice to also declare the flashlight feature -->
+    <uses-feature android:name="android.hardware.camera.flash" android:required="true" />
+
+</manifest>
