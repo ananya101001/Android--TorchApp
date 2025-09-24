@@ -48,6 +48,31 @@ Add the following to `AndroidManifest.xml`:
    cd Android--TorchApp
 
 ## ⚙️ Core Implementation (High Level)
+## 🔄 Application Flow
+
+The TorchApp works in a simple, event-driven flow:
+
+1. **User Interaction**  
+   - The user taps the **toggle button** on the app UI.
+
+2. **MainActivity Handling**  
+   - `MainActivity` receives the click event.  
+   - It checks for necessary **permissions** (Camera/Flashlight).  
+
+3. **CameraManager Call**  
+   - If permissions are granted, `CameraManager.setTorchMode(cameraId, onOff)` is called.  
+   - The `cameraId` corresponds to the back camera that supports flash.
+
+4. **Torch State Change**  
+   - The call attempts to switch the flashlight **ON** or **OFF** depending on the toggle state.  
+
+5. **Result Handling**  
+   - **Success**: The UI updates to reflect the new torch state (ON/OFF).  
+   - **Failure**: An error message (Toast/log) is shown to the user.  
+
+6. **Lifecycle Safety**  
+   - If the app goes into the background or is paused, it can optionally turn off the torch to conserve resources.  
+
 
 ```mermaid
 flowchart TD
