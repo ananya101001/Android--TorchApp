@@ -47,24 +47,17 @@ Add the following to `AndroidManifest.xml`:
    git clone https://github.com/ananya101001/Android--TorchApp.git
    cd Android--TorchApp
 
+## ⚙️ Core Implementation (High Level)
+
+```mermaid
 flowchart TD
     B[User taps toggle] --> C[MainActivity handles click]
     C --> D[Camera manager setTorchMode cameraId onOff]
     D --> E{Call succeeds?}
     E -->|yes| F[Update UI state]
     E -->|no| G[Show error toast and log]
+```
 
-    
-📂 Project Structure
-Android--TorchApp/
-├─ app/
-│  └─ src/main/
-│     ├─ java/.../MainActivity.java
-│     ├─ res/layout/activity_main.xml
-│     └─ AndroidManifest.xml
-├─ gradle/wrapper/
-├─ build.gradle
-├─ settings.gradle
-└─ gradle.properties
+
 
 
